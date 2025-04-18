@@ -1,0 +1,12 @@
+.center {
+    text-align: center;
+}
+
+.selectable:hover {
+    cursor: pointer
+}
+
+.emphasis {
+    color: red;
+    font-weight: bold;
+}

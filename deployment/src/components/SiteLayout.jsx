@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router";
 
 export default function SiteLayout(props) {
     return <div>
-        <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary">
+        <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary primaryColorBg">
         <Container>
             <Navbar.Brand as={Link} to='/'>
                 <img

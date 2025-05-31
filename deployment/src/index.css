@@ -19,6 +19,10 @@
     font-weight: bold;
 }
 
+.emphasisHover:hover {
+    color: rgb(129, 2, 2);
+}
+
 .primaryColorBg {
     background-color: rgb(107, 106, 210) !important;
     border-color: rgba(0,0,0,0) !important;
@@ -29,7 +33,7 @@
 }
 
 .largeBtnEffect:hover {
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 .primaryColor {
@@ -44,8 +48,16 @@
     padding: 0.7em;
 }
 
+.margin {
+    margin: 0.7em;
+}
+
 .selectable {
     text-decoration: underline;
+}
+
+.selectableHover:hover {
+    cursor: pointer;
 }
 
 .selectable:hover {
@@ -58,4 +70,47 @@
 
 .round {
     border-radius: 50%;
+}
+
+.secondaryColor {
+    color: rgb(29, 74, 103) !important;
+}
+
+.secondaryColorBg {
+    background-color: rgb(29, 74, 103) !important;
+    border-color: rgba(0,0,0,0) !important;
+}
+
+.secondaryColorBgHover:hover {
+    background-color: rgb(54, 130, 162) !important;
+}
+
+.secondaryColorHover:hover {
+    color: rgb(54, 130, 162) !important;
+}
+
+.tertiaryColor {
+    color: rgb(228, 193, 153) !important;
+}
+
+.tertiaryColorBg {
+    background-color: rgb(228, 193, 153) !important;
+    border: rgba(0,0,0,0) !important;
+}
+
+.tertiaryColorBgHover:hover {
+    background-color: rgb(225, 219, 203) !important;
+}
+
+.tertiaryColorReverseBg {
+    background-color: rgb(225, 219, 203) !important;
+    border-color: rgba(0,0,0,0) !important;
+}
+
+.tertiaryColorReverseBgHover:hover {
+    background-color: rgb(228, 193, 153) !important;
+}
+
+.tertiaryColorHover:hover {
+    color: rgb(225, 219, 203) !important;
 }

@@ -3,7 +3,7 @@ import { useCallback } from "react";
 export default function calculate(s, x, m, y, mode) {
     
     const knownS = typeof s === 'number' && s>=0;
-    const knownX = typeof x === 'number' && x>0;
+    const knownX = typeof x === 'number' && !isNaN(x);
     const knownM = typeof m === 'number' && m>=0;
     const knownY = typeof y === 'number' && y>=0;
     
@@ -18,11 +18,11 @@ export default function calculate(s, x, m, y, mode) {
 
     if (!knownY) {
         const denominator1 = 30*m-30*s+7*x;
-        if (denominator1 <= 0) {
-            return {'error': true, 'msg': '% Change: infinite'};
+        if (denominator1 == 0) {
+            return {'error': true, 'msg': 'Water Change: infinite'};
         }
         const absChange = 7*x/denominator1;
-        if (absChange>=1) {
+        if (absChange<0 || absChange>=1) {
             return {'error': true, 'msg': 'Impossible goal!'}
         }
         if (mode === 'removeThenAdd') {
@@ -78,10 +78,7 @@ export default function calculate(s, x, m, y, mode) {
             return {'error': false, 'unknown': 'x', 'value': 0};
         }
         const actualX = 30*(m-s)/7 * actualY/(1-actualY);
-        if (actualX>=0) {
-            return {'error': false, 'unknown': 's', 'value': actualX.toFixed(2)};
-        }
-        return {'error': true, 'msg': 'Impossible! You might not have arrived at steady state.'};
+        return {'error': false, 'unknown': 'x', 'value': actualX.toFixed(2)};
     }
     else if (!knownM) {
         if (y===0) {

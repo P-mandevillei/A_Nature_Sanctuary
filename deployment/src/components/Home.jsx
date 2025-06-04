@@ -1,21 +1,37 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router";
 
 export default function Home(props) {
+
+    const {t} = useTranslation('home');
+    const {lang} = useParams();
+    const nav = useNavigate();
+    function switchLang() {
+        if (lang === 'en') {
+            nav('/cn');
+        }
+        else {
+            nav('/en');
+        }
+    }
+
     return <div>
-        <h1 className="center">A Nature Sanctuary</h1>
+        <div 
+            style={{position: 'absolute', right: 20}} 
+            className="selectable primaryColor primaryColorHover"
+            onClick={switchLang}
+            >
+            {
+                lang === 'en'? '中文': 'English'
+            }
+        </div>
+        <h1 className="center"> {t('title')} </h1>
+        
         <p>Welcome to my homepage.</p>
         <Container>
             <Row>
-                <Col xs={4} sm={3} md={2} lg={1}>
-                    <Card style={{"width": "40%"}}>
-                        <img 
-                            className="selectable" 
-                            src="/github.png" 
-                            alt="github logo redirect" 
-                            onClick={()=>{window.location.href = "https://github.com/P-mandevillei"}}
-                        />
-                    </Card>
-                </Col>
+                
                 <Col xs={8} sm={9} md={10} lg={11}>
                     <p>Blah Blah Blah</p>
                 </Col>

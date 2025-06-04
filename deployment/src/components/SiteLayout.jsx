@@ -8,10 +8,16 @@ const langs = ['en', 'cn'];
 export default function SiteLayout(props) {
 
     const { lang } = useParams();
+    const [oppositeLang, setOppositeLang] = useState();
     const { i18n } = useTranslation();
     useEffect(()=>{
         if (langs.includes(lang)) {
             i18n.changeLanguage(lang);
+            if (lang === 'en') {
+                setOppositeLang('cn');
+            } else {
+                setOppositeLang('en');
+            }
         }
     }, [lang, i18n]);
     if (!langs.includes(lang)) {
@@ -20,13 +26,11 @@ export default function SiteLayout(props) {
 
     const { t } = useTranslation('siteLayout');
 
-    const langId = useId();
-    const [curLang, setCurLang] = useState(lang);
     const nav = useNavigate();
-    useEffect(()=>{
+    function switchLang() {
         const currentPath = window.location.hash.split(`/${lang}`)[1]?? '';
-        nav(`/${curLang}${currentPath}`);
-    }, [curLang]);
+        nav(`/${oppositeLang}${currentPath}`);
+    }
 
     return <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
         <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary primaryColorBg">
@@ -45,17 +49,9 @@ export default function SiteLayout(props) {
             <Nav className="me-auto">
                 <Nav.Link as={Link} to="/">{t('home')}</Nav.Link>
                 <Nav.Link as={Link} to='aquarium_calculator'>{t('calculator')}</Nav.Link>
-                <label>
-                    <Form.Select 
-                        className="primaryColorBg selectableHover" 
-                        id={langId}
-                        value={curLang}
-                        onChange={(e)=>{setCurLang(e.target.value)}}>
-                        <option value='en'>English</option>
-                        <option value='cn'>中文</option>
-                    </Form.Select>
-                </label>
-                
+                <Nav.Link onClick={switchLang}>
+                    {lang==='en'? '切换至中文/CHN' : 'Switch to ENG/英文'}
+                </Nav.Link>
             </Nav>
             </Navbar.Collapse>
         </Container>

@@ -10,20 +10,20 @@ export default function calculate(s, x, m, y, mode) {
     const totalKnown = knownS + knownX + knownM + knownY;
     
     if (totalKnown === 4) {
-        return {'error': true, 'msg': 'No unknown'};
+        return {'error': true, 'msg': 'noUnknown'};
     }
     if (totalKnown <= 2) {
-        return {'error': true, 'msg': 'Incomplete input'};
+        return {'error': true, 'msg': 'incomplete'};
     }
 
     if (!knownY) {
         const denominator1 = 30*m-30*s+7*x;
         if (denominator1 == 0) {
-            return {'error': true, 'msg': 'Water Change: infinite'};
+            return {'error': true, 'msg': 'infinite'};
         }
         const absChange = 7*x/denominator1;
         if (absChange<0 || absChange>=1) {
-            return {'error': true, 'msg': 'Impossible goal!'}
+            return {'error': true, 'msg': 'impossible'}
         }
         if (mode === 'removeThenAdd') {
             return {'error': false, 'unknown': 'y', 'value': (absChange * 100).toFixed(2)};
@@ -37,13 +37,13 @@ export default function calculate(s, x, m, y, mode) {
             return {'error': false, 'unknown': 'y', 'value': (addThenDumpActualChange * 100).toFixed(2)};
         }
         else {
-            return {'error': true, 'msg': 'Invalid mode'}
+            return {'error': true, 'msg': 'invalid'}
         }
     }
     else if (!knownS) {
         
         if (y===0) {
-            return {'error': true, 'msg': "Steady State unreachable. You should remember to change your water!"}
+            return {'error': true, 'msg': "ssUnreachable"}
         }
         let actualY = y/100;
         if (mode === 'removeThenAdd') {}
@@ -54,13 +54,13 @@ export default function calculate(s, x, m, y, mode) {
             actualY = actualY / (1+actualY);
         }
         else {
-            return {'error': true, 'msg': 'Invalid mode'}
+            return {'error': true, 'msg': 'invalid'}
         }
         const actualS = m + 7*x/30 - 7*x/30/actualY;
         if (actualS>=0) {
             return {'error': false, 'unknown': 's', 'value': actualS.toFixed(2)};
         }
-        return {'error': true, 'msg': 'Impossible goal!'};
+        return {'error': true, 'msg': 'impossible'};
     }
     else if (!knownX) {
         let actualY = y/100;
@@ -72,7 +72,7 @@ export default function calculate(s, x, m, y, mode) {
             actualY = actualY / (1+actualY);
         }
         else {
-            return {'error': true, 'msg': 'Invalid mode'}
+            return {'error': true, 'msg': 'invalid'}
         }
         if (actualY===100) {
             return {'error': false, 'unknown': 'x', 'value': 0};
@@ -82,7 +82,7 @@ export default function calculate(s, x, m, y, mode) {
     }
     else if (!knownM) {
         if (y===0) {
-            return {'error': true, 'msg': "Steady State unreachable. You should remember to change your water!"}
+            return {'error': true, 'msg': "ssUnreachable"}
         }
         let actualY = y/100;
         if (mode === 'removeThenAdd') {}
@@ -93,15 +93,15 @@ export default function calculate(s, x, m, y, mode) {
             actualY = actualY / (1+actualY);
         }
         else {
-            return {'error': true, 'msg': 'Invalid mode'}
+            return {'error': true, 'msg': 'invalid'}
         }
         const actualM = 7*x/30/actualY - 7*x/30 + s;
         if (actualM>=0) {
             return {'error': false, 'unknown': 'm', 'value': actualM.toFixed(2)};
         }
-        return {'error': true, 'msg': 'Steady state unreachable!'};
+        return {'error': true, 'msg': 'ssUnreachable2'};
     }
     else {
-        return {'error': true, 'msg': 'None matched!'};
+        return {'error': true, 'msg': 'invalid'};
     }
 }

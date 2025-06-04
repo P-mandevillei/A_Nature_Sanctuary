@@ -1,9 +1,12 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Button, Card, Form, Toast, ToastContainer } from "react-bootstrap";
-import useLocalStorage from "../../hooks/UseLocalStorage";
+import useLocalStorage from "../../../hooks/UseLocalStorage";
 import calculate from "./Calculator";
+import { useTranslation } from "react-i18next";
 
 export default function CalculatorBlock(props) {
+
+    const { t } = useTranslation('waterChangeCalculator');
 
     const substanceId = useId();
     const unitId = useId();
@@ -15,8 +18,8 @@ export default function CalculatorBlock(props) {
     const changeSubstanceRef = useRef();
     const changeUnitRef = useRef();
 
-    const [result, setResult] = useState({'error': true, 'msg': 'Incomplete input'})
-    const [data, setData] = useLocalStorage(props.name, {'substance': 'name', 'unit': 'unit', 's': null, 'x': null, 'm': null, 'y': null});
+    const [result, setResult] = useState({'error': true, 'msg': t('incomplete')})
+    const [data, setData] = useLocalStorage(props.name, {'substance': t('name'), 'unit': t('unit'), 's': null, 'x': null, 'm': null, 'y': null});
     useEffect(()=>{
         sRef.current.value = data.s;
         xRef.current.value = data.x;
@@ -38,10 +41,10 @@ export default function CalculatorBlock(props) {
     const sRef = useRef(), xRef = useRef(), mRef = useRef(), yRef = useRef();
 
     const fields = {
-        's': {'name': 'Source Level', 'unit': data['unit'], 'id': sourceId, 'ref': sRef},
-        'x': {'name': 'In-tank Level Rate of Change', 'unit': `${data['unit']}/month`, 'id': rocId, 'ref': xRef},
-        'm': {'name': 'In-tank Level Steady State', 'unit': data['unit'], 'id': targetId, 'ref': mRef},
-        'y': {'name': 'Water Change', 'unit': '%/week', 'id': changeId, 'ref': yRef}
+        's': {'name': t('s', {'name': data.substance}), 'unit': data['unit'], 'id': sourceId, 'ref': sRef},
+        'x': {'name': t('x', {'name': data.substance}), 'unit': `${data['unit']}/month`, 'id': rocId, 'ref': xRef},
+        'm': {'name': t('m', {'name': data.substance}), 'unit': data['unit'], 'id': targetId, 'ref': mRef},
+        'y': {'name': t('y'), 'unit': '%/week', 'id': changeId, 'ref': yRef}
     }
 
     function calculateBlock() {
@@ -61,7 +64,7 @@ export default function CalculatorBlock(props) {
         );
     }
 
-    const [disableInput, setDisableInput] = useState();
+    const [disableInput, setDisableInput] = useState('');
     function disable() {
         const s = parseFloat(sRef.current.value);
         const x = parseFloat(xRef.current.value); 
@@ -118,22 +121,22 @@ export default function CalculatorBlock(props) {
         <ToastContainer className="p-3" position="middle-center">
             <Toast className="secondaryColor tertiaryColorReverseBg" show={showMsg} onClose={()=>{setShowMsg(old=>!old)}}>
                 <Toast.Header>
-                    <strong className="me-auto">Delete This Block</strong>
+                    <strong className="me-auto">{t('deleteThis')} </strong>
                 </Toast.Header>
                 <Toast.Body style={{display: 'flex', flexDirection: 'column'}}>
-                    Are you sure you want to delete this block?
+                    {t('sure')}
                     <Button 
                         className="secondaryColorBg secondaryColorBgHover largeBtnEffect" 
                         style={{margin: 10}}
                         onClick={()=>setShowMsg(false)}
                     >
-                        Cancel
+                        {t('cancel')}
                     </Button>
                     <span 
                         className="emphasis emphasisHover selectable"
                         onClick={deleteSelf}
                     >
-                        Delete
+                        {t('delete')}
                     </span>
                 </Toast.Body>
             </Toast>
@@ -150,9 +153,9 @@ export default function CalculatorBlock(props) {
             {showSubstance?
                 <>
                     <Form.Label htmlFor={substanceId} />
-                    <Form.Control id={substanceId} ref={changeSubstanceRef} placeholder="Enter new name"/>
+                    <Form.Control id={substanceId} ref={changeSubstanceRef} placeholder={t('newName')}/>
                     <Button className="cardBtn primaryColorBg primaryColorBgHover" onClick={(e)=>{e?.preventDefault(); dummyData['substance']=changeSubstanceRef.current?.value; setData(dummyData);}}>
-                        Update Substance Name
+                        {t('updateName')}
                     </Button>
                 </>
                 :<></>
@@ -160,32 +163,33 @@ export default function CalculatorBlock(props) {
             {showUnit?
                 <>
                     <Form.Label htmlFor={unitId} />
-                    <Form.Control id={unitId} ref={changeUnitRef} placeholder="Leave empty if no unit."/>
+                    <Form.Control id={unitId} ref={changeUnitRef} placeholder={t('newUnit')}/>
                     <Button className="cardBtn primaryColorBg primaryColorBgHover" onClick={(e)=>{e?.preventDefault(); dummyData['unit']=changeUnitRef.current?.value; setData(dummyData);}}>
-                        Update Unit
+                        {t('updateUnit')}
                     </Button>
                 </>
                 :<></>
             }
         </p>
 
-        <Form.Label htmlFor={sourceId}>Source Level: {data['unit']? `(${data['unit']})`:''}</Form.Label>
+        <Form.Label htmlFor={sourceId}>{t('s', {'name': data.substance})}: {data['unit']? `(${data['unit']})`:''}</Form.Label>
         <Form.Control type="number" id={sourceId} ref={sRef} onChange={disable} disabled={disableInput==='s'}></Form.Control>
-        <Form.Label htmlFor={rocId}>In-tank Level Rate of Change: ({data['unit']}/month)</Form.Label>
+        <Form.Label htmlFor={rocId}>{t('x', {'name': data.substance})}: ({data['unit']}/{t('month')})</Form.Label>
         <Form.Control type="number" id={rocId} ref={xRef} onChange={disable} disabled={disableInput==='x'}></Form.Control>
-        <Form.Label htmlFor={targetId}>In-tank Level Steady State: {data['unit']? `(${data['unit']})`:''}</Form.Label>
+        <Form.Label htmlFor={targetId}>{t('m', {'name': data.substance})}: {data['unit']? `(${data['unit']})`:''}</Form.Label>
         <Form.Control type="number" id={targetId} ref={mRef} onChange={disable} disabled={disableInput==='m'}></Form.Control>
-        <Form.Label htmlFor={changeId}>Water Change: (%/week)</Form.Label>
+        <Form.Label htmlFor={changeId}>{t('y')} (%/{t('week')})</Form.Label>
         <Form.Control type="number" id={changeId} ref={yRef} onChange={disable} disabled={disableInput==='y'}></Form.Control>
         <br/>
         <Button 
             className="primaryColorBg primaryColorBgHover largeBtnEffect"
             onClick={calculateBlock}
+            disabled={disableInput === ''}
         >
-            Calculate
+            {t('calc')}
         </Button>
         <p className="secondaryColor bold">
-        {result.error? result.msg
+        {result.error? t(result.msg)
         : <>
             {fields[result.unknown].name}: {result.value} {fields[result.unknown].unit? `(${fields[result.unknown].unit})`: ''}
         </>}

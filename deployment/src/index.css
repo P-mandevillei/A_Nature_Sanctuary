@@ -49,11 +49,11 @@
 }
 
 .pad {
-    padding: 0.7em;
+    padding: 1em;
 }
 
 .margin {
-    margin: 0.7em;
+    margin: 1em;
 }
 
 .selectable {
@@ -117,4 +117,21 @@
 
 .tertiaryColorHover:hover {
     color: rgb(225, 219, 203) !important;
+}
+
+::selection {
+    background-color: rgba(29, 74, 103, 0.5);
+    color: rgb(228, 193, 153);
+}
+
+a {
+    color: rgb(107, 106, 210);
+}
+
+a:hover {
+    color: rgb(107, 146, 210);
+}
+
+a::after {
+    color: rgb(29, 74, 103);
 }

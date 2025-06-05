@@ -27,7 +27,7 @@ export default function() {
     return <Container>
         <Row>
             <Col sm={12} md={6} lg={4} xl={3} className="pad">
-                <p className="primaryColor bold enlarge center">{t('title')}</p>
+                <p className="primaryColor bold enlarge center">{t('title')} <sup>*</sup> </p>
                 <p>{t('des1')} "<span className="secondaryColor bold">+</span>" {t('des2')}</p>
                 <p><span className="secondaryColor bold">{t('des3')}</span> {t('des4')} <span className="secondaryColor bold">{t('des5')}</span> {t('des6')}</p>
                 <p>{t('des7')} <span className="secondaryColor bold">{t('des8')}</span> {t('des9')}</p>
@@ -54,6 +54,9 @@ export default function() {
                 </Container>     
                 <p className="secondaryColor bold">
                     {rocLevel} ({t('unit1', {'number': rocUnit})}) = {rocConverted} ({t('unit2')})
+                </p>
+                <p className="shrink grey"> 
+                    <sup>*</sup> {t('reference')} <a href='https://mp.weixin.qq.com/s/1Hr0FKTt7gGaDrpPCIKldw' target="_blank"> {t('refTitle')} </a>
                 </p>
 
             </Col>

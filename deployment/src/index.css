@@ -135,3 +135,69 @@ a:hover {
 a::after {
     color: rgb(29, 74, 103);
 }
+
+.grey {
+    color: grey;
+}
+
+.backdropWhole {
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.backdrop {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+
+.flexColAndCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.backgroundImg {
+  position: absolute; 
+  z-index: 5;
+  display: block; 
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.backgroundImgFlex {
+  position: absolute; 
+  z-index: 5;
+  display: block;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frontTextWrapper {
+  position: relative;
+  z-index: 999;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.padLeft {
+    padding-left: 0.4em;
+}

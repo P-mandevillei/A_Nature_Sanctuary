@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Nav, Navbar, Container, Form, Card, ToastContainer, Toast,  } from "react-bootstrap";
 import { Link, Navigate, Outlet, useNavigate, useParams } from "react-router";
 import { useTranslation } from 'react-i18next';
@@ -33,8 +33,18 @@ export default function SiteLayout(props) {
     }
     
     const [showQR, setShowQR] = useState(false);
+    const backdropRef = useRef();
+    useEffect(()=>{
+        if (showQR) {
+            backdropRef.current.style.display = 'block';
+        } else {
+            backdropRef.current.style.display = 'none';
+        }
+    }, [showQR]);
 
     return <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
+        <div className="backdropWhole" ref={backdropRef}></div>
+
         <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary primaryColorBg">
         <Container>
             <Navbar.Brand as={Link} to='/'>
@@ -59,7 +69,7 @@ export default function SiteLayout(props) {
         </Container>
         </Navbar>
 
-        <div className="margin" style={{flex: 1}} >
+        <div style={{flex: 1}} >
             <Outlet />
         </div>
         <ToastContainer className="p-3" position="middle-center" style={{position: 'fixed'}}>
@@ -74,7 +84,7 @@ export default function SiteLayout(props) {
                         className="selectable margin" 
                         src="/wechatQR.jpg" 
                         alt="An QR code for the official account of A Nature Sanctuary on WeChat" 
-                        onClick={()=>{window.open("https://web.wechat.com/", "_blank")}}
+                        onClick={()=>{window.open("https://www.wechat.com/", "_blank")}}
                         style={{
                             aspectRatio: '1/1'
                         }}
@@ -82,7 +92,7 @@ export default function SiteLayout(props) {
                 </Toast.Body>
             </Toast>
         </ToastContainer>
-
+        
         <Navbar className="primaryColorBg" bg="dark" data-bs-theme="dark"
             style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
             

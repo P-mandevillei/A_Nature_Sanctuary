@@ -108,8 +108,17 @@ export default function CalculatorBlock(props) {
     }
 
     const [showMsg, setShowMsg] = useState(false);
+    const backdropRef = useRef();
+    useEffect(()=>{
+        if (showMsg) {
+            backdropRef.current.style.display = 'block';
+        } else {
+            backdropRef.current.style.display = 'none';
+        }
+    }, [showMsg]);
 
-    return <Card className="pad">  
+    return <Card className="pad" style={{position: 'relative'}}> 
+        <div className="backdrop" ref={backdropRef}></div> 
         <span 
             style={{position: 'absolute', top: '1%', right: '2%'}} 
             className="tertiaryColor tertiaryColorHover selectableHover"

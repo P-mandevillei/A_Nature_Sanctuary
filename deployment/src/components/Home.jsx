@@ -17,26 +17,35 @@ export default function Home(props) {
     }
 
     return <div>
-        <div 
-            style={{position: 'absolute', right: 20}} 
-            className="selectable primaryColor primaryColorHover"
-            onClick={switchLang}
-            >
-            {
-                lang === 'en'? '中文': 'English'
-            }
-        </div>
-        <h1 className="center"> {t('title')} </h1>
-        
-        <p>Welcome to my homepage.</p>
-        <Container>
-            <Row>
+        <Card style={{position: 'relative', height: '90vh'}}>
+            <img 
+                className="backgroundImgFlex"
+                src="/texas_horned_lizard.webp"
+                alt="An image of my Texas horned lizard"
+            />
+            <div className="frontTextWrapper pad">
+                <h1 className="primaryColor margin"> 
+                    {t('title')}
+                </h1>
+                <div 
+                    style={{position: 'absolute', right: 20}} 
+                    className="selectable primaryColor primaryColorHover"
+                    onClick={switchLang}
+                    >
+                    {
+                        lang === 'en'? '中文': 'English'
+                    }
+                </div>
                 
-                <Col xs={8} sm={9} md={10} lg={11}>
-                    <p>Blah Blah Blah</p>
-                </Col>
-            </Row>
-        </Container>
+                <p className="secondaryColor enlarge padLeft">{t('des1')}</p>
+                <p className="secondaryColor padLeft">{t('des2')} </p>
+
+                <div>
+                    
+                </div>
+            </div>
+            
+        </Card>
         
     </div>
 }

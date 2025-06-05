@@ -46,6 +46,9 @@
     "deleteThis": "Delete This Block",
     "sure": "Are you sure you want to delete this block?",
     "cancel": "Cancel",
-    "delete": "Delete"
+    "delete": "Delete",
+
+    "reference": "Calculation referenced from: ",
+    "refTitle": "Water Change Trivia"
 
 }

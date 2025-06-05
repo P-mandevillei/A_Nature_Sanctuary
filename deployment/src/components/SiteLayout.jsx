@@ -69,9 +69,10 @@ export default function SiteLayout(props) {
         </Container>
         </Navbar>
 
-        <div style={{flex: 1}} >
+        <div style={{flex: 1, minHeight: '90vh'}} >
             <Outlet />
         </div>
+
         <ToastContainer className="p-3" position="middle-center" style={{position: 'fixed'}}>
             <Toast className="secondaryColor tertiaryColorReverseBg" show={showQR} onClose={()=>{setShowQR(old=>!old)}}>
                 <Toast.Header>

@@ -3,6 +3,7 @@ import CalculatorBlock from "./CalculatorBlock";
 import { useEffect, useId, useState } from "react";
 import useLocalStorage from "../../../hooks/UseLocalStorage";
 import { useTranslation } from "react-i18next";
+import TimeStamp from "../../TimeStamp";
 
 export default function() {
     const [calcMode, setCalcMode] = useLocalStorage('mode', 'default');
@@ -24,9 +25,10 @@ export default function() {
 
     const {t} = useTranslation('waterChangeCalculator');
 
-    return <Container>
+    return <div style={{position: 'relative'}} className="pad">
+    <Container>
         <Row>
-            <Col sm={12} md={6} lg={4} xl={3} className="pad">
+            <Col sm={12} md={6} lg={4} xl={3} >
                 <p className="primaryColor bold enlarge center">{t('title')} <sup>*</sup> </p>
                 <p>{t('des1')} "<span className="secondaryColor bold">+</span>" {t('des2')}</p>
                 <p><span className="secondaryColor bold">{t('des3')}</span> {t('des4')} <span className="secondaryColor bold">{t('des5')}</span> {t('des6')}</p>
@@ -79,7 +81,8 @@ export default function() {
                 </Container>
             </Col>
         </Row>
-        
-        
     </Container>
+
+        <TimeStamp name="waterChangeCalculator" style={{position: 'absolute', bottom: 0}}/>
+    </div>
 }

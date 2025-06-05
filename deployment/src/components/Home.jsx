@@ -1,6 +1,7 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
+import TimeStamp from "./TimeStamp";
 
 export default function Home(props) {
 
@@ -15,6 +16,10 @@ export default function Home(props) {
             nav('/en');
         }
     }
+
+    const updates = [
+        {'key': '1', 'name': 'waterChangeCalculator', 'link': 'aquarium_calculator/water_change_calculator'}
+    ]
 
     return <div>
         <Card style={{position: 'relative', height: '90vh'}}>
@@ -37,11 +42,25 @@ export default function Home(props) {
                     }
                 </div>
                 
-                <p className="secondaryColor enlarge padLeft">{t('des1')}</p>
-                <p className="secondaryColor padLeft">{t('des2')} </p>
+                <p className="secondaryColor enlarge" style={{paddingLeft: 30}}>{t('des1')}</p>
+                <p className="secondaryColor" style={{paddingLeft: 30}}>{t('des2')} </p>
 
-                <div>
-                    
+                <div className="flexColAndCenter pad" style={{position: 'absolute', bottom: 0, width: '100%'}}>
+                    <span className="primaryColor enlarge bold"> {t('updates')} </span>
+                    {
+                        updates.map(cur => <Card key={cur.key} className="pad" style={{width: '70%'}}>
+                            <Container>
+                                <Row>
+                                    <Col sm={12} md={6}>
+                                        <Link to={cur.link}> {t(cur.key)} </Link>
+                                    </Col>
+                                    <Col sm={12} md={6} style={{position: 'relative'}}>
+                                        <TimeStamp name={cur.name} style={{position: 'absolute', right: 0}} />
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </Card>)
+                    }
                 </div>
             </div>
             

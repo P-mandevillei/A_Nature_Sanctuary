@@ -1,5 +1,5 @@
 import { useEffect, useId, useState } from "react";
-import { Nav, Navbar, Container, Form, Card,  } from "react-bootstrap";
+import { Nav, Navbar, Container, Form, Card, ToastContainer, Toast,  } from "react-bootstrap";
 import { Link, Navigate, Outlet, useNavigate, useParams } from "react-router";
 import { useTranslation } from 'react-i18next';
 
@@ -31,6 +31,8 @@ export default function SiteLayout(props) {
         const currentPath = window.location.hash.split(`/${lang}`)[1]?? '';
         nav(`/${oppositeLang}${currentPath}`);
     }
+    
+    const [showQR, setShowQR] = useState(false);
 
     return <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
         <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary primaryColorBg">
@@ -60,18 +62,48 @@ export default function SiteLayout(props) {
         <div className="margin" style={{flex: 1}} >
             <Outlet />
         </div>
+        <ToastContainer className="p-3" position="middle-center" style={{position: 'fixed'}}>
+            <Toast className="secondaryColor tertiaryColorReverseBg" show={showQR} onClose={()=>{setShowQR(old=>!old)}}>
+                <Toast.Header>
+                    <span style={{flex: 1}}>
+                        {t('scan')}
+                    </span>
+                </Toast.Header>
+                <Toast.Body style={{display: 'flex', flexDirection: 'column'}}>
+                    <img 
+                        className="selectable margin" 
+                        src="/wechatQR.jpg" 
+                        alt="An QR code for the official account of A Nature Sanctuary on WeChat" 
+                        onClick={()=>{window.open("https://web.wechat.com/", "_blank")}}
+                        style={{
+                            aspectRatio: '1/1'
+                        }}
+                    />
+                </Toast.Body>
+            </Toast>
+        </ToastContainer>
 
         <Navbar className="primaryColorBg" bg="dark" data-bs-theme="dark"
             style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
             
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 <img 
-                    className="selectable" 
+                    className="selectable margin" 
                     src="/github.png" 
                     alt="github logo redirect" 
-                    onClick={()=>{window.location.href = "https://github.com/P-mandevillei"}}
+                    onClick={()=>{window.open("https://github.com/P-mandevillei", "_blank")}}
                     style={{
                         aspectRatio: '1/1',
+                        height: 30
+                    }}
+                />
+                <img 
+                    className="selectable margin" 
+                    src="/wechatIcon_no_bg.jpg"
+                    alt="WeChat logo that opens an QR code" 
+                    onClick={()=>{setShowQR(true)}}
+                    style={{
+                        aspectRatio: '1.3/1',
                         height: 30
                     }}
                 />

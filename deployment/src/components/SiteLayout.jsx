@@ -10,6 +10,8 @@ export default function SiteLayout(props) {
     const { lang } = useParams();
     const [oppositeLang, setOppositeLang] = useState();
     const { i18n } = useTranslation();
+    const nav = useNavigate();
+    
     useEffect(()=>{
         if (langs.includes(lang)) {
             i18n.changeLanguage(lang);
@@ -18,15 +20,13 @@ export default function SiteLayout(props) {
             } else {
                 setOppositeLang('en');
             }
+        } else {
+            nav('/en');
         }
     }, [lang, i18n]);
-    if (!langs.includes(lang)) {
-        return <Navigate to='/en' replace />;
-    }
 
     const { t } = useTranslation('siteLayout');
 
-    const nav = useNavigate();
     function switchLang() {
         const currentPath = window.location.hash.split(`/${lang}`)[1]?? '';
         nav(`/${oppositeLang}${currentPath}`);

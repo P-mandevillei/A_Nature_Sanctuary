@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from "react";
 import useLocalStorage from "../../../hooks/UseLocalStorage";
 import { useTranslation } from "react-i18next";
 import TimeStamp from "../../TimeStamp";
+import { Link, useParams } from "react-router";
 
 export default function() {
     const [calcMode, setCalcMode] = useLocalStorage('mode', 'default');
@@ -24,6 +25,7 @@ export default function() {
     }, [rocLevel, rocUnit]);
 
     const {t} = useTranslation('waterChangeCalculator');
+    const {lang} = useParams();
 
     return <div style={{position: 'relative'}} className="pad">
     <Container>
@@ -83,6 +85,8 @@ export default function() {
         </Row>
     </Container>
 
+        <Link to={`/${lang}/aquarium_calculator`}>{t('back')}</Link>
         <TimeStamp name="waterChangeCalculator" style={{position: 'absolute', bottom: 0}}/>
+    
     </div>
 }

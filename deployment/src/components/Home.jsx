@@ -28,8 +28,8 @@ export default function Home(props) {
                 src="/texas_horned_lizard.webp"
                 alt="An image of my Texas horned lizard"
             />
-            <div className="frontTextWrapper pad">
-                <h1 className="primaryColor margin"> 
+            <div className="frontTextWrapper">
+                <h1 className="primaryColor" style={{margin: 30}}> 
                     {t('title')}
                 </h1>
                 <div 

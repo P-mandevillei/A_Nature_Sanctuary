@@ -190,7 +190,7 @@ a::after {
 
 .frontTextWrapper {
   position: relative;
-  z-index: 999;
+  z-index: 998;
   top: 0;
   width: 100%; 
   height: 100%;
@@ -200,4 +200,8 @@ a::after {
 
 .padLeft {
     padding-left: 0.4em;
+}
+
+.iconShrink:hover {
+    height: 25px !important;
 }

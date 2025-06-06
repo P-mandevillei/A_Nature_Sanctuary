@@ -6,6 +6,7 @@ import Home from './components/Home'
 import AquariumCalculator from './components/AquariumCalculator/AquariumCalculator'
 import WaterChangeCalculator from './components/AquariumCalculator/WaterChangeCalculator/WaterChangeCalculator'
 import { useEffect } from 'react'
+import About from './components/About/About'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route index element={<AquariumCalculator/>} />
           <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
         </Route>
+        <Route path='about' element={<About />} />
         <Route path='*' element={<Navigate to='/en' replace />} />
       </Route>
       <Route path='/' element={<Navigate to='/en' replace />} />

@@ -61,6 +61,7 @@ export default function SiteLayout(props) {
             <Nav className="me-auto">
                 <Nav.Link as={Link} to="/">{t('home')}</Nav.Link>
                 <Nav.Link as={Link} to='aquarium_calculator'>{t('calculator')}</Nav.Link>
+                <Nav.Link as={Link} to='about'>About</Nav.Link>
                 <Nav.Link onClick={switchLang}>
                     {lang==='en'? '切换至中文/CHN' : 'Switch to ENG/英文'}
                 </Nav.Link>
@@ -99,7 +100,7 @@ export default function SiteLayout(props) {
             
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 <img 
-                    className="selectable margin" 
+                    className="selectable margin iconShrink" 
                     src="/github.png" 
                     alt="github logo redirect" 
                     onClick={()=>{window.open("https://github.com/P-mandevillei", "_blank")}}
@@ -109,12 +110,33 @@ export default function SiteLayout(props) {
                     }}
                 />
                 <img 
-                    className="selectable margin" 
+                    className="selectable margin iconShrink" 
                     src="/wechatIcon_no_bg.jpg"
                     alt="WeChat logo that opens an QR code" 
                     onClick={()=>{setShowQR(true)}}
                     style={{
                         aspectRatio: '1.3/1',
+                        height: 30
+                    }}
+                />
+                
+                <img 
+                    className="selectable margin iconShrink" 
+                    src="/ins_icon.png"
+                    alt="Instagram logo that links to my Instagram homepage" 
+                    onClick={()=>{window.open('https://www.instagram.com/a.nature.sanctuary', '_blank')}}
+                    style={{
+                        aspectRatio: '1/1',
+                        height: 30
+                    }}
+                />
+                <img 
+                    className="selectable margin iconShrink" 
+                    src="/email_icon.png"
+                    alt="E-mail logo that links to my email address" 
+                    onClick={()=>{window.open('mailto:p.mandevillei38324@gmail.com')}}
+                    style={{
+                        aspectRatio: '1/1',
                         height: 30
                     }}
                 />

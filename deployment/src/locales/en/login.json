@@ -1,0 +1,12 @@
+{
+    "fail": "Log in failed",
+    "cannotFind": "Sorry, we could not find your account.",
+    "cannotConnect": "Cannot connect to the database. Please try again later or contact us.",
+    "commFail": "Communication failed",
+    "logoutFail": "Log out failed",
+    "login": "Log in",
+    "logout": "Log out",
+    "username": "Username",
+    "password": "Password",
+    "title": "Log in to access protected content"
+}

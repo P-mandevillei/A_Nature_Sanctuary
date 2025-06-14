@@ -1,0 +1,12 @@
+{
+    "fail": "登录失败",
+    "cannotFind": "账号不存在",
+    "cannotConnect": "无法连接到数据库，请稍后再试。",
+    "commFail": "连接失败",
+    "logoutFail": "退出登录失败",
+    "login": "登录",
+    "logout": "退出登录",
+    "username": "账号",
+    "password": "密码",
+    "title": "登录后可访问此内容"
+}

@@ -1,0 +1,7 @@
+{
+    "methodNotAllowed": "Method Not Allowed",
+    "incompleteInput": "Incomplete input fields.",
+    "notAuthed": "Not authenticated",
+    "invalidToken": "Invalid Token",
+    "noKey": "Missing request type"
+}

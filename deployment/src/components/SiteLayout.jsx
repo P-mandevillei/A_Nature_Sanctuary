@@ -65,6 +65,7 @@ export default function SiteLayout(props) {
                 <Nav.Link onClick={switchLang}>
                     {lang==='en'? '切换至中文/CHN' : 'Switch to ENG/英文'}
                 </Nav.Link>
+                {props.connection? <></>:<Navbar.Text className="shrink tertiaryColor"> {t('noConnection')} </Navbar.Text>}
             </Nav>
             </Navbar.Collapse>
         </Container>

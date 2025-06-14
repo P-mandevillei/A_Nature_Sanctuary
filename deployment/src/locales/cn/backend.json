@@ -1,0 +1,7 @@
+{
+    "methodNotAllowed": "该方法已被禁用",
+    "incompleteInput": "输入不完整",
+    "notAuthed": "对不起，你没有该权限",
+    "invalidToken": "身份验证无效",
+    "noKey": "未注明请求类型"
+}

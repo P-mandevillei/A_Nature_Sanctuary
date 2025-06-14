@@ -5,9 +5,11 @@ import SiteLayout from './components/SiteLayout'
 import Home from './components/Home'
 import AquariumCalculator from './components/AquariumCalculator/AquariumCalculator'
 import WaterChangeCalculator from './components/AquariumCalculator/WaterChangeCalculator/WaterChangeCalculator'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import About from './components/About/About'
 import UnitConverter from './components/AquariumCalculator/UnitConverter/UnitConverter'
+import { protectedPath } from './paths/paths'
+import LoginContext from './contexts/loginContext'
 
 function App() {
 
@@ -20,21 +22,53 @@ function App() {
     return null;
   }
 
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [connection, setConnection] = useState(false);
+  
+  function checkLogin() {
+      fetch(protectedPath, {
+          method: "POST",
+          headers: {
+              'content-type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify({request: 'checkLogin'})
+      }).then(res => res.json())
+      .then(result => {
+        if (result?.connect) {
+            setLoggedIn(result?.login?? false);
+            setConnection(true);
+        }
+        else {
+            setLoggedIn(false);
+            setConnection(false);
+        }
+      }).catch(err => {
+        setConnection(false);
+      })
+  }
+
+  useEffect(()=>{
+      checkLogin();
+  }, []);
+
   return <HashRouter>
     <ScrollToTop />
-    <Routes>
-      <Route path='/:lang' element={<SiteLayout/>}>
-        <Route index element={<Home/>}></Route>
-        <Route path='aquarium_calculator'>
-          <Route index element={<AquariumCalculator/>} />
-          <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
-          <Route path='unit_converter' element={<UnitConverter />} />
+    <LoginContext.Provider value={[loggedIn, setLoggedIn]}>
+      <Routes>
+        <Route path='/:lang' element={<SiteLayout connection={connection} />}>
+          <Route index element={<Home/>}></Route>
+          <Route path='aquarium_calculator'>
+            <Route index element={<AquariumCalculator/>} />
+            <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
+            <Route path='unit_converter' element={<UnitConverter />} />
+          </Route>
+          <Route path='about' element={<About />} />
+          <Route path='*' element={<Navigate to='/en' replace />} />
         </Route>
-        <Route path='about' element={<About />} />
-        <Route path='*' element={<Navigate to='/en' replace />} />
-      </Route>
-      <Route path='/' element={<Navigate to='/en' replace />} />
-    </Routes>
+        <Route path='/' element={<Navigate to='/en' replace />} />
+      </Routes>
+    </LoginContext.Provider>
   </HashRouter>
 }
 

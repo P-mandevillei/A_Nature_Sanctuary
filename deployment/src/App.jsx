@@ -7,6 +7,7 @@ import AquariumCalculator from './components/AquariumCalculator/AquariumCalculat
 import WaterChangeCalculator from './components/AquariumCalculator/WaterChangeCalculator/WaterChangeCalculator'
 import { useEffect } from 'react'
 import About from './components/About/About'
+import UnitConverter from './components/AquariumCalculator/UnitConverter/UnitConverter'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='aquarium_calculator'>
           <Route index element={<AquariumCalculator/>} />
           <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
+          <Route path='unit_converter' element={<UnitConverter />} />
         </Route>
         <Route path='about' element={<About />} />
         <Route path='*' element={<Navigate to='/en' replace />} />

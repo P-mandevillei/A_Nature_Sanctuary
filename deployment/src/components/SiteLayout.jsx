@@ -47,19 +47,19 @@ export default function SiteLayout(props) {
 
         <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary primaryColorBg">
         <Container>
-            <Navbar.Brand as={Link} to='/'>
+            <Navbar.Brand as={Link} to=''>
                 <img
-                src="/logo.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="React Bootstrap logo"
+                    src="/logo.png"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
                 />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-                <Nav.Link as={Link} to="/">{t('home')}</Nav.Link>
+                <Nav.Link as={Link} to="">{t('home')}</Nav.Link>
                 <Nav.Link as={Link} to='aquarium_calculator'>{t('calculator')}</Nav.Link>
                 <Nav.Link as={Link} to='about'>About</Nav.Link>
                 <Nav.Link onClick={switchLang}>

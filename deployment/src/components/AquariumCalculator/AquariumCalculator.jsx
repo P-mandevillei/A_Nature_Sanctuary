@@ -13,7 +13,13 @@ export default function AquariumCalculator() {
             <h1 className="center primaryColor">
                 {t('title')}
             </h1>
-            <Link to={`/${lang}/aquarium_calculator/water_change_calculator`} >{t('waterChange')}</Link>
+            <div>
+                <Link to={`/${lang}/aquarium_calculator/water_change_calculator`} >{t('waterChange')}</Link>
+            </div>
+            <div>
+                <Link to={`/${lang}/aquarium_calculator/unit_converter`} > {t('unitConverter')} </Link>
+            </div>
+            
         </div>
         <TimeStamp name='aquariumCalculator' style={{position: 'absolute', bottom: 0}} />
     </div>

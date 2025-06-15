@@ -3,6 +3,7 @@ import { Nav, Navbar, Container, Form, Card, ToastContainer, Toast,  } from "rea
 import { Link, Navigate, Outlet, useNavigate, useParams } from "react-router";
 import { useTranslation } from 'react-i18next';
 import LoginContext from "../contexts/loginContext";
+import { HashLoader } from "react-spinners";
 
 const langs = ['en', 'cn'];
 
@@ -11,7 +12,9 @@ function ConnectToDB(props) {
     const { t } = useTranslation('siteLayout');
 
     if (props.connection === null) {
-        return <Navbar.Text className="shrink tertiaryColor"> 
+        return <Navbar.Text className="shrink tertiaryColor">
+            <HashLoader cssOverride={{display: 'inline-block'}} size={'1em'} color='rgb(228, 193, 153)' />
+            {' '}
             {t('connecting')}
         </Navbar.Text>
     } else if (!props.connection) {

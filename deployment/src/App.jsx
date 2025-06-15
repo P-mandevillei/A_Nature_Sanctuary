@@ -32,8 +32,7 @@ function App() {
         headers: {
             'content-type': 'application/json'
         },
-        credentials: 'include',
-        body: JSON.stringify({request: 'checkLogin'})
+        credentials: 'include'
     }).then(res => res.json())
     .then(result => {
       if (result?.connect) {

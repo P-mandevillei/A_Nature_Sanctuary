@@ -42,7 +42,6 @@ export default function LogIn(props) {
         })
         .then(res => res.json())
         .then(result => {
-            console.log(result);
             setShowLoader(false);
             if (result.error) {
                 setLoggedIn(false);
@@ -114,7 +113,7 @@ export default function LogIn(props) {
                     style={{...props?.logoutStyle, display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                     onClick={logout}
                 >
-                { showLoader2? <BarLoader loading={showLoader} color='rgb(228, 193, 153)' cssOverride={{'margin': '0.6em'}} /> : t('logout')}
+                { showLoader2? <BarLoader loading={showLoader2} color='rgb(228, 193, 153)' cssOverride={{'margin': '0.6em'}} /> : t('logout')}
             </Button>
             : <Card className={props.loginClassName} style={props?.loginStyle}>
                 <div className="center enlarge bold primaryColor"> {t('title')} </div>

@@ -16,13 +16,21 @@ export default function LogIn(props) {
     const passwordId = useId();
     const passwordRef = useRef();
 
-    const [loggedIn, setLoggedIn, checkLogin] = useContext(LoginContext);
+    const [loggedIn, setLoggedIn, checkLogin, connection] = useContext(LoginContext);
 
-    const [showLoader, setShowLoader] = useState(false);
+    const [showLoader, setShowLoader] = useState(connection === null);
     const [showLoader2, setShowLoader2] = useState(false);
     const [showMsg, setShowMsg] = useState(false);
     const [msgHeader, setMsgHeader] = useState("");
     const [msgBody, setMsgBody] = useState("");
+
+    useEffect(()=>{
+        if (connection === null) {
+            setShowLoader(true);
+        } else {
+            setShowLoader(false);
+        }
+    }, [connection]);
 
     function login() {
         setShowLoader(true);

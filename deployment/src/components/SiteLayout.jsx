@@ -63,7 +63,7 @@ export default function SiteLayout(props) {
         }
     }, [showQR]);
 
-    const [loggedIn, setLoggedIn, checkLogin] = useContext(LoginContext);
+    const [loggedIn, setLoggedIn, checkLogin, connection] = useContext(LoginContext);
 
     return <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
         <div className="backdropWhole" ref={backdropRef}></div>
@@ -88,7 +88,7 @@ export default function SiteLayout(props) {
                 <Nav.Link onClick={switchLang}>
                     {lang==='en'? '切换至中文/CHN' : 'Switch to ENG/英文'}
                 </Nav.Link>
-                <ConnectToDB connection={props.connection} checkLogin={checkLogin} />
+                <ConnectToDB connection={connection} checkLogin={checkLogin} />
             </Nav>
             </Navbar.Collapse>
         </Container>

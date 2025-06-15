@@ -54,9 +54,9 @@ function App() {
 
   return <HashRouter>
     <ScrollToTop />
-    <LoginContext.Provider value={[loggedIn, setLoggedIn, checkLogin]}>
+    <LoginContext.Provider value={[loggedIn, setLoggedIn, checkLogin, connection]}>
       <Routes>
-        <Route path='/:lang' element={<SiteLayout connection={connection} />}>
+        <Route path='/:lang' element={<SiteLayout />}>
           <Route index element={<Home/>}></Route>
           <Route path='aquarium_calculator'>
             <Route index element={<AquariumCalculator/>} />

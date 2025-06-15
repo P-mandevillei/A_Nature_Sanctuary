@@ -1,7 +1,7 @@
 import { useContext, useEffect, useId, useRef, useState } from "react";
 import { Button, Form, Toast, ToastBody, ToastContainer, ToastHeader } from "react-bootstrap";
 import { Card } from "react-bootstrap";
-import { loginPath, logoutPath, protectedPath } from "../paths/paths.js";
+import { loginPath, logoutPath } from "../paths/paths.js";
 import { BarLoader, HashLoader } from "react-spinners";
 import { useTranslation } from "react-i18next";
 import LoginContext from "../contexts/loginContext.js";
@@ -16,7 +16,7 @@ export default function LogIn(props) {
     const passwordId = useId();
     const passwordRef = useRef();
 
-    const [loggedIn, setLoggedIn] = useContext(LoginContext);
+    const [loggedIn, setLoggedIn, checkLogin] = useContext(LoginContext);
 
     const [showLoader, setShowLoader] = useState(false);
     const [showLoader2, setShowLoader2] = useState(false);
@@ -95,7 +95,7 @@ export default function LogIn(props) {
     }
 
     return <div >
-        <ToastContainer className="p-3" style={{zIndex: 998}}>
+        <ToastContainer className="p-3" position="middle-center" style={{zIndex: 998}}>
             <Toast className="tertiaryColorBg" show={showMsg} onClose={()=>{setShowMsg(false)}}>
                 <Toast.Header>
                     <span style={{flex: 1}}>

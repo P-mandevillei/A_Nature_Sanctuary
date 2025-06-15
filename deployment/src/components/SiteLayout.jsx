@@ -1,9 +1,27 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useContext, useEffect, useId, useRef, useState } from "react";
 import { Nav, Navbar, Container, Form, Card, ToastContainer, Toast,  } from "react-bootstrap";
 import { Link, Navigate, Outlet, useNavigate, useParams } from "react-router";
 import { useTranslation } from 'react-i18next';
+import LoginContext from "../contexts/loginContext";
 
 const langs = ['en', 'cn'];
+
+function ConnectToDB(props) {
+
+    const { t } = useTranslation('siteLayout');
+
+    if (props.connection === null) {
+        return <Navbar.Text className="shrink tertiaryColor"> 
+            {t('connecting')}
+        </Navbar.Text>
+    } else if (!props.connection) {
+        return <Navbar.Text className="shrink tertiaryColor selectable tertiaryColorHover" onClick={()=>props.checkLogin()}> 
+            {t('noConnection')}
+        </Navbar.Text>
+    } else {
+        return <></>
+    }
+}
 
 export default function SiteLayout(props) {
 
@@ -42,6 +60,8 @@ export default function SiteLayout(props) {
         }
     }, [showQR]);
 
+    const [loggedIn, setLoggedIn, checkLogin] = useContext(LoginContext);
+
     return <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
         <div className="backdropWhole" ref={backdropRef}></div>
 
@@ -65,7 +85,7 @@ export default function SiteLayout(props) {
                 <Nav.Link onClick={switchLang}>
                     {lang==='en'? '切换至中文/CHN' : 'Switch to ENG/英文'}
                 </Nav.Link>
-                {props.connection? <></>:<Navbar.Text className="shrink tertiaryColor"> {t('noConnection')} </Navbar.Text>}
+                <ConnectToDB connection={props.connection} checkLogin={checkLogin} />
             </Nav>
             </Navbar.Collapse>
         </Container>

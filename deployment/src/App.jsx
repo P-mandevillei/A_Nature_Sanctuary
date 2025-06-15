@@ -8,8 +8,8 @@ import WaterChangeCalculator from './components/AquariumCalculator/WaterChangeCa
 import { useEffect, useState } from 'react'
 import About from './components/About/About'
 import UnitConverter from './components/AquariumCalculator/UnitConverter/UnitConverter'
-import { protectedPath } from './paths/paths'
 import LoginContext from './contexts/loginContext'
+import { checkLoginPath } from './paths/paths'
 
 function App() {
 
@@ -23,29 +23,30 @@ function App() {
   }
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [connection, setConnection] = useState(false);
+  const [connection, setConnection] = useState(null);
   
   function checkLogin() {
-      fetch(protectedPath, {
-          method: "POST",
-          headers: {
-              'content-type': 'application/json'
-          },
-          credentials: 'include',
-          body: JSON.stringify({request: 'checkLogin'})
-      }).then(res => res.json())
-      .then(result => {
-        if (result?.connect) {
-            setLoggedIn(result?.login?? false);
-            setConnection(true);
-        }
-        else {
-            setLoggedIn(false);
-            setConnection(false);
-        }
-      }).catch(err => {
-        setConnection(false);
-      })
+    setConnection(null);
+    fetch(checkLoginPath, {
+        method: "GET",
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({request: 'checkLogin'})
+    }).then(res => res.json())
+    .then(result => {
+      if (result?.connect) {
+          setLoggedIn(result?.login?? false);
+          setConnection(true);
+      }
+      else {
+          setLoggedIn(false);
+          setConnection(false);
+      }
+    }).catch(err => {
+      setConnection(false);
+    })
   }
 
   useEffect(()=>{
@@ -54,7 +55,7 @@ function App() {
 
   return <HashRouter>
     <ScrollToTop />
-    <LoginContext.Provider value={[loggedIn, setLoggedIn]}>
+    <LoginContext.Provider value={[loggedIn, setLoggedIn, checkLogin]}>
       <Routes>
         <Route path='/:lang' element={<SiteLayout connection={connection} />}>
           <Route index element={<Home/>}></Route>

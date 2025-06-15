@@ -1,23 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import LogIn from "../Login";
 import LoginContext from "../../contexts/loginContext";
-import { protectedPath } from "../../paths/paths";
 import { useParams } from "react-router";
+import { aboutContent1Path } from "../../paths/paths";
 
 export default function About() {
-    const [loggedIn, setLoggedIn] = useContext(LoginContext);
+    const [loggedIn, setLoggedIn, checkLogin] = useContext(LoginContext);
 
     const [content1, setContent1] = useState('');
     const {lang} = useParams();
 
     function fetchContent1() {
-        fetch(protectedPath, {
+        fetch(aboutContent1Path, {
             method: "POST",
             credentials: 'include',
             headers: {
                 'content-type': "application/json"
-            },
-            body:  JSON.stringify({'request': 'aboutContent1'})
+            }
         })
         .then(res => res.json())
         .then(result => {

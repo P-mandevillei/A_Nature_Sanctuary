@@ -18,7 +18,8 @@ export default function Home(props) {
     }
 
     const updates = [
-        {'key': '1', 'name': 'waterChangeCalculator', 'link': 'aquarium_calculator/water_change_calculator'}
+        {'key': '1', 'name': 'waterChangeCalculator', 'link': 'aquarium_calculator/water_change_calculator'},
+        {'key': '2', 'name': 'chloramine', 'link': 'focus/chloramine'}
     ]
 
     return <div>

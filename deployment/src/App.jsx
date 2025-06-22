@@ -10,6 +10,9 @@ import About from './components/About/About'
 import UnitConverter from './components/AquariumCalculator/UnitConverter/UnitConverter'
 import LoginContext from './contexts/loginContext'
 import { checkLoginPath } from './paths/paths'
+import Focus from './components/Focus/Focus'
+import Chloramine from './components/Focus/Chloramine/Chloramine'
+import WidthContext from './contexts/widthContext.js';
 
 function App() {
 
@@ -52,12 +55,29 @@ function App() {
       checkLogin();
   }, []);
 
+  const [screenW, setScreenW] = useState(window.innerWidth);
+  useEffect(()=>{
+    const resize = () => {setScreenW(window.innerWidth)}
+    
+    window.addEventListener('resize', resize);
+    return ()=>{
+        window.removeEventListener('resize', resize);
+    };
+  });
+
   return <HashRouter>
     <ScrollToTop />
     <LoginContext.Provider value={[loggedIn, setLoggedIn, checkLogin, connection]}>
+    <WidthContext.Provider value={screenW} >
       <Routes>
         <Route path='/:lang' element={<SiteLayout />}>
           <Route index element={<Home/>}></Route>
+          <Route path="focus">
+            <Route index element={<Focus />} />
+            <Route path="chloramine" element={<Chloramine />} />
+
+          </Route>
+
           <Route path='aquarium_calculator'>
             <Route index element={<AquariumCalculator/>} />
             <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
@@ -68,6 +88,7 @@ function App() {
         </Route>
         <Route path='/' element={<Navigate to='/en' replace />} />
       </Routes>
+    </WidthContext.Provider>
     </LoginContext.Provider>
   </HashRouter>
 }

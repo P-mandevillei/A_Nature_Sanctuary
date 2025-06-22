@@ -205,3 +205,38 @@ a::after {
 .iconShrink:hover {
     height: 25px !important;
 }
+
+.articlePic {
+    width: 100%
+}
+
+.picExplain {
+    font-size: small;
+    color: grey;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.hangingIndent {
+    padding-left: 2em;
+    text-indent: -1.6em;
+}
+
+.ref {
+    color: grey;
+    font-size: 0.7em;
+    margin: 0.3em;
+}
+
+.wrap {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+}
+
+.scroll-container {
+  width: 100%;
+  overflow-x: auto;     /* Enable horizontal scroll */
+  overflow-y: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}

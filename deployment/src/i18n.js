@@ -7,6 +7,7 @@ import cnAquariumCalculator from "./locales/cn/aquariumCalculator.json";
 import cnWaterChangeCalculator from "./locales/cn/waterChangeCalculator.json";
 import cnLogin from "./locales/cn/login.json";
 import cnBackend from "./locales/cn/backend.json";
+import cnChloramine from "./components/Focus/Chloramine/cn.json";
 
 import enSiteLayout from "./locales/en/siteLayout.json";
 import enHome from "./locales/en/home.json";
@@ -14,6 +15,7 @@ import enAquariumCalculator from "./locales/en/aquariumCalculator.json";
 import enWaterChangeCalculator from "./locales/en/waterChangeCalculator.json";
 import enLogin from "./locales/en/login.json";
 import enBackend from "./locales/en/backend.json";
+import enChloramine from "./components/Focus/Chloramine/en.json";
 
 const resources = {
     en: {
@@ -22,7 +24,8 @@ const resources = {
         aquariumCalculator: enAquariumCalculator,
         waterChangeCalculator: enWaterChangeCalculator,
         login: enLogin,
-        backend: enBackend
+        backend: enBackend,
+        chloramine: enChloramine,
     },
     cn: {
         siteLayout: cnSiteLayout,
@@ -30,7 +33,8 @@ const resources = {
         aquariumCalculator: cnAquariumCalculator,
         waterChangeCalculator: cnWaterChangeCalculator,
         login: cnLogin,
-        backend: cnBackend
+        backend: cnBackend,
+        chloramine: cnChloramine,
     }
 };
 

@@ -6,7 +6,8 @@ export default function TimeStamp(props) {
 
     const timeStamps = {
         'aquariumCalculator': '2025-06-05',
-        'waterChangeCalculator': '2025-06-05'
+        'waterChangeCalculator': '2025-06-05',
+        "chloramine": "2025-06-21",
     }
 
     return <div className="shrink grey" style={{...props.style}}>

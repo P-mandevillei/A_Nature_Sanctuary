@@ -83,8 +83,9 @@ export default function SiteLayout(props) {
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
                 <Nav.Link as={Link} to="">{t('home')}</Nav.Link>
+                <Nav.Link as={Link} to="focus">{t('focus')}</Nav.Link>
                 <Nav.Link as={Link} to='aquarium_calculator'>{t('calculator')}</Nav.Link>
-                <Nav.Link as={Link} to='about'>About</Nav.Link>
+                <Nav.Link as={Link} to='about'>{t('about')}</Nav.Link>
                 <Nav.Link onClick={switchLang}>
                     {lang==='en'? '切换至中文/CHN' : 'Switch to ENG/英文'}
                 </Nav.Link>

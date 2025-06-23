@@ -234,9 +234,13 @@ a::after {
 }
 
 .scroll-container {
-  width: 100%;
-  overflow-x: auto;     /* Enable horizontal scroll */
-  overflow-y: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
+    width: 100%;
+    overflow-x: auto;     /* Enable horizontal scroll */
+    overflow-y: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.selectableImgWrapper:hover img {
+    opacity: 0.5;
 }

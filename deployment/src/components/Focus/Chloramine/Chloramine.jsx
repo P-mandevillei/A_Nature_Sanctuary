@@ -90,22 +90,27 @@ export default function Chloramine() {
             {t('p28')}
         </p>
         <p>
-            {t('p29')} {' '}
+            {t('p29')}
             <span className="primaryColor bold">{t('p29-30-1')}</span>
-            {' '} {t('p29-30-2')}
+            {t('p29-30-2')}
+        </p>
+        <MathBlock content="H=\frac{C}{P}" className='primaryColor' />
+        <p className="picExplain center">
+            {t('p29-30-3')}
+            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>1, 2</sup>
         </p>
         <p>
             <span className="primaryColor bold">{t('p30')}</span>
             {t('p31')}
             1.5 <MathBlock inline content="\pm" /> 1
             {t('period')}
-            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>1</sup>
+            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>3</sup>
             {t('p32')} {' '}
             <MathBlock inline content="\text{Fe}^{2+}" /> 
             {' '} {t('p33')} {' '}
             <MathBlock inline content="\text{Fe}^{3+}" />
             {t('period')}
-            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>2</sup>
+            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>4</sup>
             {t('p34')}
         </p>
         <ArticlePic src={autopsy} alt={'Dead E. kilesa'} >
@@ -126,20 +131,23 @@ export default function Chloramine() {
         </p>
         <ArticlePic src={Shanghai} >
             {t('p43')}
-            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>3</sup>
+            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>5</sup>
         </ArticlePic>
         <ArticlePic src={StLouis} >
             {t('p44')}
-            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>4</sup>
+            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>6</sup>
         </ArticlePic>
         <p>
             {t('p45')}
             <span className="primaryColor bold"> 0.49 mg/L </span>
             {t('p46')}
-            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>5</sup>
+            <sup className="selectable primaryColor primaryColorHover" onClick={()=>{sectionRef.current.scrollIntoView({behavior: 'smooth'})}}>7</sup>
         </p>
         <p>
-            {t('p47')}
+            <span className="primaryColor bold">
+                {t('p47')}
+            </span>
+            {t('p47-48-1')}
         </p>
         {
             screenW<500? <>
@@ -170,19 +178,25 @@ export default function Chloramine() {
 
         <h2 ref={sectionRef} className="primaryColor" style={{fontSize: '1.2em'}}>{t('ref')}</h2>
         <p className="hangingIndent ref wrap">
-            (1) Trogolo, D.; Arey, J. S. Equilibria and Speciation of Chloramines, Bromamines, and Bromochloramines in Water. Environmental Science & Technology 2016, 51 (1), 128–140. <a href="https://doi.org/10.1021/acs.est.6b03219" target="_blank">https://doi.org/10.1021/acs.est.6b03219</a>.
+            (1) Henry's Law Constants. Henrys-law.org. <a href="https://henrys-law.org/henry/casrn/10599-90-3" target="_blank">https://henrys-law.org/henry/casrn/10599-90-3</a> (accessed 2025-06-23).
         </p>
         <p className="hangingIndent ref wrap">
-            (2) City of Foster City Public Works / Estero Municipal Improvement District. Chloramination Questions and Answers, updated May 20, 2004; Foster City, CA. <a href="https://www.fostercity.org/sites/default/files/fileattachments/public_works/page/4761/more-chloramine-faq-s.pdf" target="_blank">https://www.fostercity.org/sites/default/files/fileattachments/public_works/page/4761/more-chloramine-faq-s.pdf</a> (accessed June 22, 2025).
+            (2) Henry's Law Constants. Henrys-law.org. <a href="https://henrys-law.org/henry/casrn/7782-50-5" target="_blank">https://henrys-law.org/henry/casrn/7782-50-5</a> (accessed 2025-06-23).
+        </p>        
+        <p className="hangingIndent ref wrap">
+            (3) Trogolo, D.; Arey, J. S. Equilibria and Speciation of Chloramines, Bromamines, and Bromochloramines in Water. Environmental Science & Technology 2016, 51 (1), 128–140. <a href="https://doi.org/10.1021/acs.est.6b03219" target="_blank">https://doi.org/10.1021/acs.est.6b03219</a>.
         </p>
         <p className="hangingIndent ref wrap">
-            (3) Shanghai Water Authority (Shanghai Municipal Oceanic Bureau). 上海中心城区2025年5月供水水质; 2025. <a href="https://swj.sh.gov.cn/bmts/20250618/8f0f6cc29d2649cc9652003420f94687.html" target="_blank">https://swj.sh.gov.cn/bmts/20250618/8f0f6cc29d2649cc9652003420f94687.html</a> (accessed 2025-06-22).
+            (4) City of Foster City Public Works / Estero Municipal Improvement District. Chloramination Questions and Answers, updated May 20, 2004; Foster City, CA. <a href="https://www.fostercity.org/sites/default/files/fileattachments/public_works/page/4761/more-chloramine-faq-s.pdf" target="_blank">https://www.fostercity.org/sites/default/files/fileattachments/public_works/page/4761/more-chloramine-faq-s.pdf</a> (accessed June 22, 2025).
         </p>
         <p className="hangingIndent ref wrap">
-            (4) City of St. Louis Water Division - Department of Public Utilities; Skouby, C. City of St. Louis Water Division Consumer Confidence Report 2022; 2022; p. 6. <a href="https://www.stlwater.com/water-quality/ccr2022.pdf" target="_blank">https://www.stlwater.com/water-quality/ccr2022.pdf</a> (accessed 2025-06-22).
+            (5) Shanghai Water Authority (Shanghai Municipal Oceanic Bureau). 上海中心城区2025年5月供水水质; 2025. <a href="https://swj.sh.gov.cn/bmts/20250618/8f0f6cc29d2649cc9652003420f94687.html" target="_blank">https://swj.sh.gov.cn/bmts/20250618/8f0f6cc29d2649cc9652003420f94687.html</a> (accessed 2025-06-22).
         </p>
         <p className="hangingIndent ref wrap">
-            (5) Tsai, C.-F.; McKee, J. A. Acute Toxicity to Goldfish of Mixtures of Chloramines, Copper, and Linear Alkylate Sulfonate. Transactions of the American Fisheries Society 1980, 109 (1), 132–141. <a href="https://doi.org/10.1577/1548-8659(1980)109%3C132:attgom%3E2.0.co;2" target="_blank">https://doi.org/10.1577/1548-8659(1980)109%3C132:attgom%3E2.0.co;2</a>.
+            (6) City of St. Louis Water Division - Department of Public Utilities; Skouby, C. City of St. Louis Water Division Consumer Confidence Report 2022; 2022; p. 6. <a href="https://www.stlwater.com/water-quality/ccr2022.pdf" target="_blank">https://www.stlwater.com/water-quality/ccr2022.pdf</a> (accessed 2025-06-22).
+        </p>
+        <p className="hangingIndent ref wrap">
+            (7) Tsai, C.-F.; McKee, J. A. Acute Toxicity to Goldfish of Mixtures of Chloramines, Copper, and Linear Alkylate Sulfonate. Transactions of the American Fisheries Society 1980, 109 (1), 132–141. <a href="https://doi.org/10.1577/1548-8659(1980)109%3C132:attgom%3E2.0.co;2" target="_blank">https://doi.org/10.1577/1548-8659(1980)109%3C132:attgom%3E2.0.co;2</a>.
 ‌        </p>
         
         <Link to={`/${lang}/focus`}>{t('back')}</Link>

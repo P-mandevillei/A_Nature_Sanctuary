@@ -1,5 +1,6 @@
 {
     "title": "Aquarium Calculator",
-    "waterChange": "Water Change Calculator",
-    "unitConverter": "Unit Converter"
+    "waterChange": "Water Change Calculator (Steady State)",
+    "unitConverter": "Unit Converter",
+    "levelAdj": "Water Change Calculator (Level Adjustment)"
 }

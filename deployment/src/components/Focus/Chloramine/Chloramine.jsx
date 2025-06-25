@@ -1,11 +1,11 @@
 import TimeStamp from "../../TimeStamp";
-import autopsy from "./pics/autopsy_enantiopus_kilesa.jpeg";
-import fishInSand from "./pics/enantiopus_kilesa_in_sand.jpeg";
-import emptyTank from "./pics/empty_tank.jpeg";
+import autopsy from "./pics/autopsy_enantiopus_kilesa.webp";
+import fishInSand from "./pics/enantiopus_kilesa_in_sand.webp";
+import emptyTank from "./pics/empty_tank.webp";
 import MathBlock from "../../MathBlock";
 import ArticlePic from "../ArticlePic";
 import Shanghai from "./pics/shanghai_pipe_water.png";
-import StLouis from "./pics/st_louis_tap.png";
+import StLouis from "./pics/st_louis_tap.webp";
 import { useContext, useRef } from "react";
 import WidthContext from "../../../contexts/widthContext";
 import { Link, useParams } from "react-router";

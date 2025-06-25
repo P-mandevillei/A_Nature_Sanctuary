@@ -13,6 +13,7 @@ import { checkLoginPath } from './paths/paths'
 import Focus from './components/Focus/Focus'
 import Chloramine from './components/Focus/Chloramine/Chloramine'
 import WidthContext from './contexts/widthContext.js';
+import WaterChangeLevelAdjustment from './components/AquariumCalculator/WaterChangeLevelAdjustment/WaterChangeLevelAdjustment.jsx'
 
 function App() {
 
@@ -75,14 +76,15 @@ function App() {
           <Route path="focus">
             <Route index element={<Focus />} />
             <Route path="chloramine" element={<Chloramine />} />
-
           </Route>
 
           <Route path='aquarium_calculator'>
             <Route index element={<AquariumCalculator/>} />
             <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
             <Route path='unit_converter' element={<UnitConverter />} />
+            <Route path='water_change_level_adjustment' element={<WaterChangeLevelAdjustment />} />
           </Route>
+
           <Route path='about' element={<About />} />
           <Route path='*' element={<Navigate to='/en' replace />} />
         </Route>

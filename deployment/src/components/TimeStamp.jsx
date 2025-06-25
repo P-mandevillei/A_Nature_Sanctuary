@@ -5,9 +5,10 @@ export default function TimeStamp(props) {
     const {t} = useTranslation('siteLayout');
 
     const timeStamps = {
-        'aquariumCalculator': '2025-06-05',
-        'waterChangeCalculator': '2025-06-05',
-        "chloramine": "2025-06-21",
+        'aquariumCalculator': '2025-06-25',
+        'waterChangeCalculator': '2025-06-25',
+        "chloramine": "2025-06-23",
+        "waterChangeLevelAdjustment": "2025-06-25",
     }
 
     return <div className="shrink grey" style={{...props.style}}>

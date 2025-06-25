@@ -1,5 +1,6 @@
 {
     "title": "水族计算器",
-    "waterChange": "换水计算器",
-    "unitConverter": "单位换算器"
+    "waterChange": "换水计算器（稳态）",
+    "unitConverter": "单位换算器",
+    "levelAdj": "换水计算器（浓度调节）"
 }

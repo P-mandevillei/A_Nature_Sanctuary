@@ -7,7 +7,7 @@ export default function TimeStamp(props) {
     const timeStamps = {
         'aquariumCalculator': '2025-06-25',
         'waterChangeCalculator': '2025-06-25',
-        "chloramine": "2025-06-23",
+        "chloramine": "2025-07-01",
         "waterChangeLevelAdjustment": "2025-06-25",
     }
 

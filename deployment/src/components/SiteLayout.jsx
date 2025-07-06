@@ -4,6 +4,7 @@ import { Link, Navigate, Outlet, useNavigate, useParams } from "react-router";
 import { useTranslation } from 'react-i18next';
 import LoginContext from "../contexts/loginContext";
 import { HashLoader } from "react-spinners";
+import { AnimatePresence, motion } from "motion/react";
 
 const langs = ['en', 'cn'];
 
@@ -54,19 +55,19 @@ export default function SiteLayout(props) {
     }
     
     const [showQR, setShowQR] = useState(false);
-    const backdropRef = useRef();
-    useEffect(()=>{
-        if (showQR) {
-            backdropRef.current.style.display = 'block';
-        } else {
-            backdropRef.current.style.display = 'none';
-        }
-    }, [showQR]);
 
     const [loggedIn, setLoggedIn, checkLogin, connection] = useContext(LoginContext);
 
     return <div style={{display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
-        <div className="backdropWhole" ref={backdropRef}></div>
+        <AnimatePresence>
+            {showQR && (<motion.div
+                className="backdropWhole"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                transition={{duration: 0.5}}
+            />)}
+        </AnimatePresence>
 
         <Navbar bg="dark" data-bs-theme="dark" sticky="top" expand="lg" className="bg-body-tertiary primaryColorBg">
         <Container>

@@ -3,6 +3,8 @@ import { Button, Card, Form, Toast, ToastContainer } from "react-bootstrap";
 import useLocalStorage from "../../../hooks/UseLocalStorage";
 import calculate from "./Calculator";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 
 export default function CalculatorBlock(props) {
     // adapted from the calculator block for steady state
@@ -110,17 +112,17 @@ export default function CalculatorBlock(props) {
     }
 
     const [showMsg, setShowMsg] = useState(false);
-    const backdropRef = useRef();
-    useEffect(()=>{
-        if (showMsg) {
-            backdropRef.current.style.display = 'block';
-        } else {
-            backdropRef.current.style.display = 'none';
-        }
-    }, [showMsg]);
-
+    
     return <Card className="pad" style={{position: 'relative'}}> 
-        <div className="backdrop" ref={backdropRef}></div> 
+        <AnimatePresence>
+            {showMsg && (<motion.div
+                className="backdrop"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                transition={{duration: 0.5}}
+            />)}
+        </AnimatePresence>
         <span 
             style={{position: 'absolute', top: '1%', right: '2%'}} 
             className="tertiaryColor tertiaryColorHover selectableHover"

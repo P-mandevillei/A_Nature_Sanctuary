@@ -142,7 +142,7 @@ a::after {
 
 .backdropWhole {
     background-color: rgba(0,0,0,0.5);
-    display: none;
+    /*display: none;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -156,7 +156,7 @@ a::after {
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    
     height: 100%;
     width: 100%;
     z-index: 999;
@@ -243,4 +243,17 @@ a::after {
 
 .selectableImgWrapper:hover img {
     opacity: 0.5;
+}
+
+.noMargin {
+    margin: 0;
+}
+
+.marginTopBottom {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.noPad {
+    padding: 0;
 }

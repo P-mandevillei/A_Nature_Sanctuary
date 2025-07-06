@@ -3,6 +3,7 @@ import { Button, Card, Form, Toast, ToastContainer } from "react-bootstrap";
 import useLocalStorage from "../../../hooks/UseLocalStorage";
 import calculate from "./Calculator";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function CalculatorBlock(props) {
 
@@ -108,17 +109,17 @@ export default function CalculatorBlock(props) {
     }
 
     const [showMsg, setShowMsg] = useState(false);
-    const backdropRef = useRef();
-    useEffect(()=>{
-        if (showMsg) {
-            backdropRef.current.style.display = 'block';
-        } else {
-            backdropRef.current.style.display = 'none';
-        }
-    }, [showMsg]);
 
     return <Card className="pad" style={{position: 'relative'}}> 
-        <div className="backdrop" ref={backdropRef}></div> 
+        <AnimatePresence>
+            {showMsg && (<motion.div
+                className="backdrop"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                transition={{duration: 0.5}}
+            />)}
+        </AnimatePresence>
         <span 
             style={{position: 'absolute', top: '1%', right: '2%'}} 
             className="tertiaryColor tertiaryColorHover selectableHover"
@@ -197,11 +198,16 @@ export default function CalculatorBlock(props) {
         >
             {t('calc')}
         </Button>
-        <p className="secondaryColor bold">
-        {result.error? t(result.msg)
-        : <>
-            {fields[result.unknown].name}: {result.value} {fields[result.unknown].unit? `(${fields[result.unknown].unit})`: ''}
-        </>}
-        </p>
+        
+        {
+            result.error? 
+            <p className="emphasis">{t(result.msg)}</p> 
+            : 
+            <>
+                <p className="noMargin"> {fields[result.unknown].name}: </p>
+                <p className="center secondaryColor bold noMargin enlarge"> {result.value} {fields[result.unknown].unit? fields[result.unknown].unit: ''} </p>
+            </>
+        }
+        
     </Card>
 }

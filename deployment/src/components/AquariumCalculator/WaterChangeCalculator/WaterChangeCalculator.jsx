@@ -36,7 +36,7 @@ export default function() {
             <Col xs={12} sm={6} lg={4} xl={3} >
                 <p className="primaryColor bold enlarge center noMargin">{t('title')} <sup>*</sup> </p>
                 
-                <p className="noMargin grey bold selectableHover" onClick={()=>{setShowIns(o => !o)}}>
+                <p className="noMargin grey bold selectableHover hover" onClick={()=>{setShowIns(o => !o)}}>
                     <motion.span
                         animate={{ rotate: (showIns? 0:-90) }}
                         transition={{ duration: 0.2 }}
@@ -44,7 +44,7 @@ export default function() {
                     >
                         <ChevronDown size={18}/>
                     </motion.span>
-                    Instructions
+                    {t('ins')}
                 </p>
                 <AnimatePresence>
                 {showIns && (
@@ -58,10 +58,10 @@ export default function() {
                             {t('nav1')} 
                             <Link to={`/${lang}/aquarium_calculator/water_change_level_adjustment`}>{t('nav2')}</Link>
                         </p>
-                        <p className="noMargin">{t('des1')} "<span className="primaryColor bold">+</span>" {t('des2')}</p>
-                        <p className="noMargin"><span className="primaryColor bold">{t('des3')}</span> {t('des4')} <span className="primaryColor bold">{t('des5')}</span> {t('des6')}</p>
-                        <p className="noMargin">{t('des7')} <span className="primaryColor bold">{t('des8')}</span> {t('des9')}</p>
-                        <p className="primaryColor bold">{t('des10')} </p>
+                        <p className="noMargin">{t('des1')}<span className="primaryColor bold">+</span>{t('des2')}</p>
+                        <p className="noMargin"><span className="primaryColor bold">{t('des3')}</span>{t('des4')}<span className="primaryColor bold">{t('des5')}</span>{t('des6')}</p>
+                        <p className="noMargin">{t('des7')}<span className="primaryColor bold">{t('des8')}</span>{t('des9')}</p>
+                        <p className="primaryColor bold">{t('des10')}</p>
                         <p className="grey shrink" style={{fontWeight: 'normal'}}>{t('unitReminder')}</p>
                     </motion.div>
                 )}

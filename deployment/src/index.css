@@ -257,3 +257,7 @@ a::after {
 .noPad {
     padding: 0;
 }
+
+.hover:hover {
+    opacity: 0.6;
+}

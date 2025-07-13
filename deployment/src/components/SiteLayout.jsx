@@ -96,7 +96,7 @@ export default function SiteLayout(props) {
         </Container>
         </Navbar>
 
-        <div style={{flex: 1, minHeight: '90vh'}} >
+        <div style={{flex: 1, minHeight: '90vh', display: 'flex', flexDirection: 'column'}} >
             <Outlet />
         </div>
 

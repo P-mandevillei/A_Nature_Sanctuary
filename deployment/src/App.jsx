@@ -1,19 +1,21 @@
-
 import './App.css'
 import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router'
-import SiteLayout from './components/SiteLayout'
-import Home from './components/Home'
-import AquariumCalculator from './components/AquariumCalculator/AquariumCalculator'
-import WaterChangeCalculator from './components/AquariumCalculator/WaterChangeCalculator/WaterChangeCalculator'
-import { useEffect, useState } from 'react'
-import About from './components/About/About'
-import UnitConverter from './components/AquariumCalculator/UnitConverter/UnitConverter'
-import LoginContext from './contexts/loginContext'
+import { lazy, Suspense, useEffect, useState } from 'react'
+
 import { checkLoginPath } from './paths/paths'
-import Focus from './components/Focus/Focus'
-import Chloramine from './components/Focus/Chloramine/Chloramine'
+import LoginContext from './contexts/loginContext'
 import WidthContext from './contexts/widthContext.js';
-import WaterChangeLevelAdjustment from './components/AquariumCalculator/WaterChangeLevelAdjustment/WaterChangeLevelAdjustment.jsx'
+
+import SiteLayout from './components/SiteLayout';
+import Loading from './components/Loading.jsx'
+const Home = lazy(() => import('./components/Home'));
+const AquariumCalculator = lazy(() => import('./components/AquariumCalculator/AquariumCalculator'));
+const WaterChangeCalculator = lazy(() => import('./components/AquariumCalculator/WaterChangeCalculator/WaterChangeCalculator'));
+const About = lazy(() => import('./components/About/About'));
+const UnitConverter = lazy(() => import('./components/AquariumCalculator/UnitConverter/UnitConverter'));
+const Focus = lazy(() => import('./components/Focus/Focus'));
+const Chloramine = lazy(() => import('./components/Focus/Chloramine/Chloramine'));
+const WaterChangeLevelAdjustment = lazy(() => import('./components/AquariumCalculator/WaterChangeLevelAdjustment/WaterChangeLevelAdjustment'));
 
 function App() {
 
@@ -70,26 +72,30 @@ function App() {
     <ScrollToTop />
     <LoginContext.Provider value={[loggedIn, setLoggedIn, checkLogin, connection]}>
     <WidthContext.Provider value={screenW} >
-      <Routes>
-        <Route path='/:lang' element={<SiteLayout />}>
-          <Route index element={<Home/>}></Route>
-          <Route path="focus">
-            <Route index element={<Focus />} />
-            <Route path="chloramine" element={<Chloramine />} />
-          </Route>
+      
+        <Routes>
+          <Route path='/:lang' element={<SiteLayout />}>
+              
+              <Route index element={<Suspense fallback={<Loading />}> <Home/> </Suspense>}></Route>
+              <Route path="focus">
+                <Route index element={<Suspense fallback={<Loading />}> <Focus /> </Suspense>} />
+                <Route path="chloramine" element={<Suspense fallback={<Loading />}> <Chloramine /> </Suspense>} />
+              </Route>
 
-          <Route path='aquarium_calculator'>
-            <Route index element={<AquariumCalculator/>} />
-            <Route path='water_change_calculator' element={<WaterChangeCalculator/>} />
-            <Route path='unit_converter' element={<UnitConverter />} />
-            <Route path='water_change_level_adjustment' element={<WaterChangeLevelAdjustment />} />
-          </Route>
+              <Route path='aquarium_calculator'>
+                <Route index element={<Suspense fallback={<Loading />}> <AquariumCalculator/> </Suspense>} />
+                <Route path='water_change_calculator' element={<Suspense fallback={<Loading />}> <WaterChangeCalculator/> </Suspense>} />
+                <Route path='unit_converter' element={<Suspense fallback={<Loading />}> <UnitConverter /> </Suspense>} />
+                <Route path='water_change_level_adjustment' element={<Suspense fallback={<Loading />}> <WaterChangeLevelAdjustment /> </Suspense>} />
+              </Route>
 
-          <Route path='about' element={<About />} />
-          <Route path='*' element={<Navigate to='/en' replace />} />
-        </Route>
-        <Route path='/' element={<Navigate to='/en' replace />} />
-      </Routes>
+              <Route path='about' element={<Suspense fallback={<Loading />}> <About /> </Suspense>} />
+              <Route path='*' element={<Navigate to='/en' replace />} />
+          
+          </Route>
+          <Route path='/' element={<Navigate to='/en' replace />} />
+        </Routes>
+    
     </WidthContext.Provider>
     </LoginContext.Provider>
   </HashRouter>

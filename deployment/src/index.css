@@ -1,3 +1,8 @@
+body {
+  font-family: 'Public Sans', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+}
+
 .center {
     text-align: center;
 }
@@ -260,4 +265,9 @@ a::after {
 
 .hover:hover {
     opacity: 0.6;
+}
+
+.slanted {
+    -webkit-clip-path: polygon(50% 0%, 100% 0%, 50% 100%, 0% 100%);
+    clip-path: polygon(50% 0%, 100% 0%, 50% 100%, 0% 100%);
 }

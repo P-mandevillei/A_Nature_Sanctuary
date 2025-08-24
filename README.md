@@ -1,5 +1,11 @@
 # A Nature Sanctuary
 
+## Updates
+- As for now, the backend only supports access from [my github pages](https://p-mandevillei.github.io). <br>
+- [Unit Converter](https://a-nature-sanctuary.netlify.app/#/en/aquarium_calculator/unit_converter) in development!
+
+
+<br><br><br>
 Shield: [![CC BY-NC-ND 4.0][cc-by-nc-nd-shield]][cc-by-nc-nd]
 
 This work is licensed under a

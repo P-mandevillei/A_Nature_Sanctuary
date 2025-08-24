@@ -19,11 +19,11 @@ export default function AquariumCalculator() {
             <div>
                 <Link to={`/${lang}/aquarium_calculator/water_change_level_adjustment`} > {t('levelAdj')} </Link>
             </div>
-            {/*
+            
             <div>
                 <Link to={`/${lang}/aquarium_calculator/unit_converter`} > {t('unitConverter')} </Link>
             </div>
-            */}
+            
         </div>
         <TimeStamp name='aquariumCalculator' style={{position: 'absolute', bottom: 0}} />
     </div>

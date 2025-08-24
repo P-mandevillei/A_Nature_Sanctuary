@@ -44,8 +44,8 @@ export default function Home(props) {
                     }
                 </div>
                 
-                <p className="secondaryColor enlarge" style={{paddingLeft: 30}}>{t('des1')}</p>
-                <p className="secondaryColor" style={{paddingLeft: 30}}>{t('des2')} </p>
+                <p className="secondaryColor enlarge" style={{paddingLeft: 30, paddingRight: 30}}>{t('des1')}</p>
+                <p className="secondaryColor" style={{paddingLeft: 30, paddingRight: 30}}>{t('des2')} </p>
 
                 <div className="flexColAndCenter pad" style={{position: 'absolute', bottom: 0, width: '100%'}}>
                     <span className="primaryColor enlarge bold"> {t('updates')} </span>

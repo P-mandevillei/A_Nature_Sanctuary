@@ -1,0 +1,1 @@
+import{u as s,j as n}from"./index-D0sySJTx.js";function i(t){const{t:a}=s("siteLayout"),e={aquariumCalculator:"2025-06-25",waterChangeCalculator:"2025-07-06",chloramine:"2025-07-01",waterChangeLevelAdjustment:"2025-07-06"};return n.jsxs("div",{className:"shrink grey",style:{...t.style},children:[a("edit")," ",e[t.name]??""]})}export{i as T};

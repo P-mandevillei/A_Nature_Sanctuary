@@ -1,0 +1,1 @@
+import{r as S}from"./index-D0sySJTx.js";function u(e,r){let t=JSON.parse(localStorage.getItem(e));t||(t=r);const[s,a]=S.useState(t);return[s,o=>{a(o),localStorage.setItem(e,JSON.stringify(o))}]}export{u};
